@@ -12,13 +12,14 @@ const addRecipe = async (recipeData) => {
 
     const newRecipe = new Recipe(recipe);
     await newRecipe.save();
+    console.log("added", newRecipe);
     return newRecipe;
   } catch (error) {
     throw new Error("Failed to add recipe");
   }
 };
 
-const deleteRecipe = async (recipeId) => {
+const deletedRecipe = async (recipeId) => {
   try {
     const recipe = await Recipe.findByIdAndDelete(recipeId);
     return recipe;
@@ -38,6 +39,6 @@ const getAllRecipe = async () => {
 
 module.exports = {
   addRecipe,
-  deleteRecipe,
+  deletedRecipe,
   getAllRecipe,
 };

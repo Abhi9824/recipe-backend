@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 3000;
 const { Recipe } = require("./models/recipe.model");
 const {
   addRecipe,
-  deleteRecipe,
+  deletedRecipe,
   getAllRecipe,
 } = require("./utils/recipe.function");
 
@@ -50,11 +50,12 @@ app.post("/recipe/add", async (req, res) => {
 app.delete("/recipe/:recipeId", async (req, res) => {
   try {
     const { recipeId } = req.params;
-    const deleteRecipe = await deleteRecipe(recipeId);
+    const deleteRecipe = await deletedRecipe(recipeId);
     if (deleteRecipe) {
       res
         .status(200)
-        .json({ message: "Recipe deleted successfully", recipe: deleteRecipe });
+        .json({ message: "Recipe deleted successfully", deleteRecipe });
+      console.log("deleteRecipe", deleteRecipe);
     } else {
       res.status(404).json({ message: "Recipe not found" });
     }
