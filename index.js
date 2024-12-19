@@ -24,7 +24,7 @@ const {
 } = require("./utils/recipe.function");
 
 //add recipe
-app.post("/add/recipe", async (req, res) => {
+app.post("/recipe/add", async (req, res) => {
   try {
     const { title, cuisine, imageUrl, ingredients, instructions } = req.body;
     const newRecipe = await addRecipe({
